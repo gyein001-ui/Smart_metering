@@ -14,8 +14,8 @@ def load_data():
         df = pd.read_excel("data.xlsx")
         
         # 🚀 [핵심 최적화] 검색 속도를 위해 모든 열의 데이터를 합친 '검색전용_문자열' 열을 미리 생성
-        # 이렇게 하면 검색할 때마다 15,000줄을 변환할 필요가 없어 속도가 엄청나게 빨라집니다.
-        df['_search_string'] = df.astype(str).agg(' '.join, axis=1).str.lower()
+        # 에러 방지: 엑셀의 빈칸(NaN)을 빈 문자열('')로 채운 뒤 확실하게 문자열로 변환하여 합침
+        df['_search_string'] = df.fillna('').astype(str).apply(' '.join, axis=1).str.lower()
         
         return df
     except FileNotFoundError:
