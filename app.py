@@ -2,9 +2,10 @@ import streamlit as st
 import pandas as pd
 
 # 모바일 화면에 맞춘 페이지 기본 설정
-st.set_page_config(page_title="데이터 뷰어", page_icon="📱", layout="centered")
+st.set_page_config(page_title="유량계정보 조회", page_icon="📱", layout="centered")
 
-st.title("📱 원격검침 데이터 조회")
+# 기존 st.title 대신 HTML 적용하여 글자 크기를 2/3 수준으로 축소 (한 줄에 맞춤)
+st.markdown("<h2 style='font-size: 1.6rem; font-weight: bold; margin-bottom: 0;'>📱 원격검침 데이터 조회</h2>", unsafe_allow_html=True)
 st.markdown("---")
 
 # 엑셀 데이터 불러오기 함수 (데이터를 캐싱하여 로딩 속도 향상)
